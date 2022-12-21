@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Вам нужно, написать функцию, которая принимает 1 параметр. При первом вызове, она его запоминает, при втором — суммирует переданный параметр с тем, что передали первый раз и тд. Всё это с замыканиями, например: sum(3) = 3 sum(5) = 8 sum(20) = 28
+
+      function sum(a) {
+        const arr = [];
+        return function (b) {
+          arr.push(a + b);
+          return arr.reduce((currEl, elem) => {
+            currEl += elem;
+            return currEl;
+          });
+        };
+      }
+
+      let result = sum(0);
+
+      console.log(result(3));
+      console.log(result(5));
+      console.log(result(20));
+
+      //Это не все. Возьмите счетчик, который мы писали в классе и добавьте ему возможность задавать начальное значение и шаг счетчика при инициализации и метод для сброса к начальному значению. Помните, что функция - это объект)
+
+      function createCount() {
+        let counter = 10;
+        let step = 1;
+        let sumCount = 0;
+
+        function result() {
+          if (step <= 1) {
+            return (counter += step);
+          } else {
+            return (counter += step);
+          }
+        }
+        result.newValue = function (value) {
+          counter = value;
+        };
+        result.addStep = function (value) {
+          step = value;
+        };
+        result.reset = function () {
+          counter = 10;
+          step = 1;
+        };
+        return result;
+      }
+      const fbCounter = createCount();
+
+      console.log(fbCounter());
+      console.log(fbCounter());
+      console.log(fbCounter.newValue(12));
+      console.log(fbCounter.addStep(5));
+      console.log(fbCounter());
+      console.log(fbCounter());
+      console.log(fbCounter.reset());
+      console.log(fbCounter());
+      
+    </script>
+  </body>
+</html>
