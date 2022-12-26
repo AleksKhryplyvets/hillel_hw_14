@@ -29,36 +29,28 @@
 
       //Это не все. Возьмите счетчик, который мы писали в классе и добавьте ему возможность задавать начальное значение и шаг счетчика при инициализации и метод для сброса к начальному значению. Помните, что функция - это объект)
 
-      function createCount() {
-        let counter = 10;
-        let step = 1;
+      function createCount(counterValue,stepValue) {
+        let counter = counterValue;
+        let step = stepValue;
         let sumCount = 0;
 
         function result() {
-          if (step <= 1) {
-            return (counter += step);
-          } else {
-            return (counter += step);
-          }
+      return (counter += step);
         }
-        result.newValue = function (value) {
-          counter = value;
-        };
-        result.addStep = function (value) {
-          step = value;
-        };
+        // result.newValue = function (value) {
+        //   counter = value;
+        // };
+        // result.addStep = function (value) {
+        //   step = value;
+        // };
         result.reset = function () {
-          counter = 10;
-          step = 1;
+          counter = counterValue;
+          step = stepValue;
         };
         return result;
       }
-      const fbCounter = createCount();
+      const fbCounter = createCount(15,5);
 
-      console.log(fbCounter());
-      console.log(fbCounter());
-      console.log(fbCounter.newValue(12));
-      console.log(fbCounter.addStep(5));
       console.log(fbCounter());
       console.log(fbCounter());
       console.log(fbCounter.reset());
